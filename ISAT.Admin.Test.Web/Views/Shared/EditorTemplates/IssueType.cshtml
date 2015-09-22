@@ -1,0 +1,18 @@
+﻿@using ISAT.Admin.Test.Web.Domain
+@using ISAT.Admin.Test.Web.Infrastructure
+@using Heroic.Web.IoC
+@using ISAT.Admin.Test.Web.Data
+@{
+    var options = Enum.GetValues(typeof(IssueType))
+    .Cast<IssueType>()
+    .Select(t => new SelectListItem
+    {
+        Text = t.ToString(),
+        Value = t.ToString(),
+        Selected = t == Model
+    })
+    .ToArray();
+
+}
+
+@Html.DropDownList("", options, new { @class = "form-control" })
